@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+   <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #cadee4;
+            color: black;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #d87979;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .h1 {
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        .h2 {
+            font-size: 14px;
+        }
+        .headerBar {
+            background-color: goldenrod;
+            color: #3f362c;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            margin-bottom: 20px;
+            color: #3f362c;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .topbar {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        .currency {
+            font-size: 30px;
+            font-weight: 300;
+        }
+
+        .balance {
+            font-size: 30px;
+            font-weight: 300;
+        }
+
+        .content {
+            width: 780px;
+            margin: 0 auto;
+            padding: 3%;
+            padding-left: 6%;
+        }
+
+        .secondTitle {
+            background-color: #ffcb48;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            font-size: 25px;
+        }
+
+        .form {
+            padding: 5px;
+            padding-top: 20px;
+            justify-content: center;
+            background-color: bisque;
+            display: grid;
+            grid-template-rows: repeat(5, auto);
+        }
+
+        .formLine {
+            display: inline-flex;
+            padding: 5px 0px;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+            margin-right: 100px;
+        }
+
+        input,select {
+            width: 130px;
+            margin-left: 10px;
+        }
+
+        textarea {
+            margin-left: 10px;
+            resize: vertical;
+        }
+
+        /* Button */
+
+        button {
+            width: 100px;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 20px;
+            background-color: #ffcb48;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            box-shadow: 0 0 0 2px grey;
+            transition: 0.5s;
+        }
+
+        a {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        form > button {
+             width: 200px;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 20px;
+            background-color: #ffcb48;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            display: inline-block;
+        }
+        div > header{
+            display: block;
+            unicode-bidi: isolate;
+        }
+        form{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(5, auto) auto;
+            grid-gap: 10px 50px;
+        }
+        .icon{
+            display: none;
+        }
+        @media screen and (max-width:857px){
+            .icon{
+            display: inline;
+            }
+            .h1{
+            display: none;
+            }
+            .h1.active{
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 480px);
+            width: calc(100% - 77%);
+            top: 8px;
+            right: 16px;
+            position: absolute;
+            top: 30px;
+            left: 0px;
+            border: 5px solid;
+            background-color: #ffcb48;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="Dashboard.html"><img src="Expense_Mate_logo.jpg" alt="Expense Mate Logo" height="50"></a>
+        <nav>
+            <div class="h1">
+                <a href="Expense_List.html">Expense List</a> |
+                <a href="Budget_Planner.html">Budget Planner</a> |
+                <a href="Category_view.html">Category View</a> |
+                <a href="Add_Expense.html">Add Expense</a> |
+                <a href="Monthly_Summary.html">Monthly Summary</a>
+            </div>
+        </nav>
+        <nav>
+            <div class="h2">
+                <button onclick="location.href='help.html'">Help</button> |
+                <button onclick="location.href='About.html'">About</button> |
+                <button onclick="location.href='Profile.html'">Profile</button> |
+                <button onclick="location.href='login.html'">Logout</button>
+            </div>
+        </nav>
+        <div class="icon" onclick="toggle()"><svg width="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg></div>
+    </header>
+    <div class="headerBar">
+        <header>
+            <h1 class="title">About Us</h1>
+        </header>
+    </div>
+    <div class="content">
+        <h2 class="secondTitle">About Expense Mate</h2>
+        <div class="form">
+            <p>Expense Mate is a user-friendly expense management application designed to help you track and manage your finances effectively. Our goal is to provide users with an intuitive platform to monitor their spending habits, plan budgets, and achieve financial goals.</p>
+        </div>
+        <h3 class="secondTitle">Our Mission</h3>
+        <div class="form">
+            <p>At Expense Mate, our mission is to empower individuals to take control of their financial well-being through easy-to-use tools and insightful analytics. We believe that managing expenses should be simple and accessible to everyone.</p>
+        </div>
+        <h3 class="secondTitle">Features</h3>
+        <div class="form">
+            <ul type="square">
+                <li>Add and categorize expenses</li>
+                <li>View expenses by category</li>
+                <li>Plan and track budgets</li>
+                <li>Generate monthly summaries and reports</li>
+            </ul>
+        </div>
+        <h3 class="secondTitle">Contact Us</h3>
+        <div class="form">
+            <p>If you have any questions, feedback, or need assistance, please feel free to reach out to us at</p>
+            <p>Email: support@expense-mate.com</p>
+            <p>Phone: +91 (123) 456-7890</p>
+            <p>Address: 123 Finance St, Mumbai, INDIA</p>
+            <p>Thank you for choosing Expense Mate to help you manage your expenses!</p>
+        </div>
+    </div>
+    <script>
+      let nav = document.querySelector('.h1');
+      function toggle(){
+        nav.classList.toggle('active');
+      }
+    </script>
+</body>
+</html>

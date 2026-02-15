@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget_Planner</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #cadee4;
+            color: black;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #d87979;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .h1 {
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        .h2 {
+            font-size: 14px;
+        }
+        .headerBar {
+            background-color: goldenrod;
+            color: #3f362c;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            margin-bottom: 20px;
+            color: #3f362c;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .topbar {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        .currency {
+            font-size: 30px;
+            font-weight: 300;
+        }
+
+        .balance {
+            font-size: 30px;
+            font-weight: 300;
+        }
+
+        .content {
+            width: 780px;
+            margin: 0 auto;
+            padding: 3%;
+            padding-left: 6%;
+        }
+
+        .secondTitle {
+            background-color: #ffcb48;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            font-size: 25px;
+        }
+
+        .form {
+            padding: 5px;
+            padding-top: 20px;
+            padding-left: 10%;
+            justify-content: center;
+            background-color: bisque;
+        }
+
+        .formLine {
+            display: inline-flex;
+            padding: 5px 0px;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+            margin-right: 100px;
+        }
+
+        input,select {
+            width: 130px;
+            margin-left: 10px;
+        }
+
+        /* table style */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color:#8d712a;
+            color: white;
+            line-height: 30px;
+        }
+
+        tbody {
+            background-color: bisque;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        /* Button */
+
+        button {
+            width: 100px;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 20px;
+            background-color: #ffcb48;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            box-shadow: 0 0 0 2px grey;
+            transition: 0.5s;
+        }
+
+        a {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        form > button {
+             width: 100px;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 20px;
+            background-color: #ffcb48;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        div > header{
+            display: block;
+            unicode-bidi: isolate;
+        }
+        .icon{
+            display: none;
+        }
+        @media screen and (max-width:857px){
+            .icon{
+            display: inline;
+            }
+            .h1{
+            display: none;
+            }
+            .h1.active{
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 480px);
+            width: calc(100% - 77%);
+            top: 8px;
+            right: 16px;
+            position: absolute;
+            top: 30px;
+            left: 0px;
+            border: 5px solid;
+            background-color: #ffcb48;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="Dashboard.html"><img src="Expense_Mate_logo.jpg" alt="Expense Mate Logo" height="50"></a>
+        <nav>
+            <div class="h1">
+                <a href="Expense_List.html">Expense List</a> |
+                <a href="Budget_Planner.html">Budget Planner</a> |
+                <a href="Category_view.html">Category View</a> |
+                <a href="Add_Expense.html">Add Expense</a> |
+                <a href="Monthly_Summary.html">Monthly Summary</a>
+            </div>
+        </nav>
+        <nav>
+            <div class="h2">
+                <button onclick="location.href='help.html'">Help</button> |
+                <button onclick="location.href='About.html'">About</button> |
+                <button onclick="location.href='Profile.html'">Profile</button> |
+                <button onclick="location.href='login.html'">Logout</button>
+            </div>
+        </nav>
+        <div class="icon" onclick="toggle()"><svg width="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg></div>
+    </header>
+    <div class="headerBar">
+        <header>
+            <h1 class="title">My Budget Tracker</h1>
+            <h2 class="topbar">Your Current Balance</h2>
+            <p>
+                <span class="currency">&#8377</span>
+                <span class="balance"></span>
+            </p>
+        <header>
+    </div>
+    <div class="content">
+        <h3 class="secondTitle">Add Transaction</h3>
+        <div class="form">
+            <form id="expForm">
+                <div class="formLine left">
+                    <span for="type">Type:</span>
+                    <select id="type">
+                        <option value="chooseOne">Choose one...</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
+                <div class="formLine right">
+                    <span for="Category">Category:</span>
+                    <select id="Category">
+                        <option value="chooseOne">Choose one...</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div class="formLine right">
+                    <span for="amount">Amount:</span>
+                    <input type="text" id="amount">
+                </div>
+                <button type="submit" class="buttonSave">Save</button>
+                <button type="cansel">cansel</button>
+            </form>
+        </div>
+    </div>
+    <div class="content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="transactionTable"></tbody>
+        </table>
+    </div>
+    <script>
+        document.getElementById('expForm').addEventListener('submit', addTransaction);
+        // initial array of transactions, reading from localStorage
+        const transactions = JSON.parse(localStorage.getItem('transactions')) || [];    
+        function addTransaction(e) {
+            e.preventDefault();
+            // get type, Category, and amount
+            let type = document.getElementById('type').value;
+            let Category = document.getElementById('Category').value;
+            let amount = document.getElementById('amount').value;
+            if (type != 'chooseOne' && Category != 'chooseOne' && amount > 0) {
+                const transaction = {
+                    type,
+                    Category,
+                    amount,
+                    id: transactions.length > 0 ? transactions[transactions.length - 1].id + 1 : 1,
+                }
+                transactions.push(transaction);
+                // localStorage 
+                localStorage.setItem('transactions', JSON.stringify(transactions));
+            }
+            document.getElementById('expForm').reset();
+            showTransactions();
+            updateBalance();
+        }
+        const showTransactions = () => {
+            const transactionTable = document.getElementById('transactionTable');
+            transactionTable.innerHTML = '';
+            for (let i = 0; i < transactions.length; i++) {
+                transactionTable.innerHTML += `
+                    <tr>
+                        <td>${transactions[i].type}</td>
+                        <td>${transactions[i].Category}</td>
+                        <td>$${transactions[i].amount}</td>
+                        <td><a class="deleteButton" onclick="deleteTransaction(${transactions[i].id})">Delete</td>
+                    </tr>
+                `;
+            }
+        }
+        const deleteTransaction = (id) => {
+            for (let i = 0; i < transactions.length; i++) {
+                if (transactions[i].id == id) {
+                    transactions.splice(i, 1);
+                }
+            }
+
+            // localStorage
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+            showTransactions();
+            updateBalance();
+        }
+
+        const updateBalance = () => {
+            let balance = 0;
+            transactions.forEach((transaction) => {
+                if (transaction.type === "income") {
+                    balance += Number(transaction.amount);
+                } else if (transaction.type === "expense") {
+                    balance -= transaction.amount;
+                }
+            });
+            document.querySelector(".balance").textContent = balance;
+        }
+        
+      let nav = document.querySelector('.h1');
+      function toggle(){
+        nav.classList.toggle('active');
+      }
+    </script>
+</body>
+</html>
