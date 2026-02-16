@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Landing Page</title>
     <style>
         
         * {
@@ -93,7 +93,6 @@
         .form {
             padding: 5px;
             padding-top: 20px;
-            padding-left: 10%;
             justify-content: center;
             background-color: bisque;
             display: grid;
@@ -168,32 +167,22 @@
     </style>
 </head>
 <body>
-    <div class="headerBar">
-        <header>
-            <h1 class="title">Login to Expense Mate</h1>
+    <div>
+        <header class="headerBar">
+            <img src="Expense_Mate_logo.jpg" alt="Expense Mate Logo">
+            <h1 class="title">Welcome to Expense Mate</h1>
+            <p class="topbar">Manage Your Expenses Efficiently</p>
         </header>
     </div>
     <div class="content">
-        <h3 class="secondTitle">Please enter your login details below</h3>
-        <div class="form">
-            <form id="expForm">
-                <div class="formLine left">
-                    <label for="username">Username:</label><br>
-                    <input type="text" id="username" name="username" required><br>
-                </div>
-                <div class="formLine left">
-                    <label for="password">Password:</label><br>
-                    <input type="password" id="password" name="password" required><br>
-                </div>
-                <button type="submit" onclick="window.location.href='dashboard.html'">Login</button>
-            </form>
-            <a href="Index.html">Back to Landing Page</a><br>
-            <a href="Register.html">Register</a><br>
-            <a href="Forgot_Password.html">Forgot Password?</a><br>
+        <div class="secondTitle">
+            <p>Your expense management solution</p>
+            <p>It is a tool for tracking and managing expenses efficiently.</p>
         </div>
-    <form action="dashboard.html" method="post">
-        
-        
-    </form>
+        <div class="form">
+           
+            <button onclick="location.href='Login.html'">Get Started</button>
+        </div>
+    </div>  
 </body>
 </html>
