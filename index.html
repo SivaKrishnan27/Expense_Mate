@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
+    <title>Landing Page</title>
     <style>
         
         * {
@@ -76,7 +76,7 @@
         }
 
         .content {
-            width: 780px;
+            width: 630px;
             margin: 0 auto;
             padding: 3%;
             padding-left: 6%;
@@ -93,7 +93,6 @@
         .form {
             padding: 5px;
             padding-top: 20px;
-            padding-left: 10%;
             justify-content: center;
             background-color: bisque;
             display: grid;
@@ -159,62 +158,31 @@
             display: block;
             unicode-bidi: isolate;
         }
+        form{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(5, auto) auto;
+            grid-gap: 10px 50px;
+        }
     </style>
 </head>
 <body>
-    <div class="headerBar">
+    <div>
         <header class="headerBar">
-            <img src="Expense_Mate_logo.jpg" alt="Expense Mate Logo" height="50">
+            <img src="Expense_Mate_logo.jpg" alt="Expense Mate Logo">
+            <h1 class="title">Welcome to Expense Mate</h1>
+            <p class="topbar">Manage Your Expenses Efficiently</p>
         </header>
     </div>
     <div class="content">
-        <h1 class="secondTitle">Register for Expense Mate</h1>
-        <div class="form">
-            <form class="expForm" action="Login.html" method="post">
-                <table>
-                    <tr>
-                        <div class="formLine left">
-                            <td><label for="username">Username:</label></td>
-                            <td><input type="text" id="username" name="username" required></td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="formLine left">
-                            <td><label for="Newpassword">New Password:</label></td>
-                            <td><input type="password" id="Newpassword" name="Newpassword" required></td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="formLine left">
-                            <td><label for="confirm_password">Confirm Password:</label></td>
-                            <td><input type="password" id="confirm_password" name="confirm_password" required></td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="formLine left">
-                            <td><label for="email">Email:</label></td>
-                            <td><input type="email" id="email" name="email" required></td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="formLine left">
-                            <td><label for="phone">Phone Number:</label></td>
-                            <td><input type="tel" id="phone" name="phone" required></td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="formLine left">
-                            <td><label for="address">Address:</label></td>
-                            <td><textarea id="address" name="address" required></textarea></td>
-                        </div>
-                    </tr>
-                </table>
-                <br><br>
-                <button type="submit">Register</button><br><br>
-                <a href="index.html">Back to Landing Page</a><br>
-                </div>
-            </form>
+        <div class="secondTitle">
+            <p>Your expense management solution</p>
+            <p>It is a tool for tracking and managing expenses efficiently.</p>
         </div>
-    </div>
+        <div class="form">
+           
+            <button onclick="location.href='Login.html'">Get Started</button>
+        </div>
+    </div>  
 </body>
 </html>
