@@ -3,275 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help</title>
+    <title>Expense Mate — Help</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+        :root {
+            --bg-body:#060f06;--bg-card:#0a1f0a;--bg-card2:#0d2b0d;
+            --accent:rgb(51,197,51);--accent-bright:rgb(87,208,87);
+            --accent-dim:#6db985;--border:rgba(51,197,51,0.2);
+            --border-active:rgba(51,197,51,0.55);
+            --header-bg:linear-gradient(135deg,#000 0%,rgb(9,66,9) 100%);
+            --glow:0 0 20px rgba(51,197,51,0.12);
         }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-color: #cadee4;
-            color: black;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #d87979;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .h1 {
-            font-size: 18px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-        }
-        .h2 {
-            font-size: 14px;
-        }
-        .headerBar {
-            background-color: goldenrod;
-            color: #3f362c;
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        .title {
-            margin-bottom: 20px;
-            color: #3f362c;
-            font-size: 40px;
-            font-weight: bold;
-        }
-
-        .topbar {
-            margin-bottom: 10px;
-            font-size: 20px;
-            font-weight: normal;
-        }
-
-        .currency {
-            font-size: 30px;
-            font-weight: 300;
-        }
-
-        .balance {
-            font-size: 30px;
-            font-weight: 300;
-        }
-
-        .content {
-            width: 780px;
-            margin: 0 auto;
-            padding: 3%;
-            padding-left: 6%;
-        }
-
-        .secondTitle {
-            background-color: #ffcb48;
-            color: #333;
-            text-align: center;
-            margin-top: 20px;
-            padding: 20px;
-            font-size: 25px;
-        }
-
-        .form {
-            padding: 5px;
-            padding-top: 20px;
-            justify-content: center;
-            background-color: bisque;
-            display: grid;
-            grid-template-rows: repeat(5, auto);
-        }
-
-        .formLine {
-            display: inline-flex;
-            padding: 5px 0px;
-        }
-
-        .left {
-            float: left;
-        }
-
-        .right {
-            float: right;
-            margin-right: 100px;
-        }
-
-        input,select {
-            width: 130px;
-            margin-left: 10px;
-        }
-
-        textarea {
-            margin-left: 10px;
-            resize: vertical;
-        }
-
-        /* Button */
-
-        button {
-            width: 100px;
-            color: #333;
-            padding: 10px;
-            text-align: center;
-            font-size: 1.1em;
-            line-height: 20px;
-            background-color: #ffcb48;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            box-shadow: 0 0 0 2px grey;
-            transition: 0.5s;
-        }
-
-        a {
-            text-decoration: underline;
-            cursor: pointer;
-        }
-        form > button {
-             width: 200px;
-            color: #333;
-            padding: 10px;
-            text-align: center;
-            font-size: 1.1em;
-            line-height: 20px;
-            background-color: #ffcb48;
-            border-radius: 5px;
-            cursor: pointer;
-            display: inline-block;
-            display: inline-block;
-        }
-        div > header{
-            display: block;
-            unicode-bidi: isolate;
-        }
-        form{
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(5, auto) auto;
-            grid-gap: 10px 50px;
-        }
-        ol>li{
-            margin-top: 10px;
-            margin-bottom: 10px;
-            color: black;
-        }
-        ul>li{
-            margin-top: 5px;
-            margin-bottom: 5px;
-            padding-left: 10px;
-        }
-        .icon{
-            display: none;
-        }
-        @media screen and (max-width:857px){
-            .icon{
-            display: inline;
-            }
-            .h1{
-            display: none;
-            }
-            .h1.active{
-            display: flex;
-            flex-direction: column;
-            height: calc(100vh - 480px);
-            width: calc(30%);
-            top: 8px;
-            right: 16px;
-            position: absolute;
-            top: 30px;
-            left: 0px;
-            border: 5px solid;
-            background-color: #ffcb48;
-            }
-        }
+        *{box-sizing:border-box;padding:0;margin:0;}
+        body{font-family:'Syne',sans-serif;min-height:100vh;background:var(--bg-body);color:var(--accent);display:flex;flex-direction:column;}
+        body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(51,197,51,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(51,197,51,0.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+        .topbar-header{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:rgba(0,0,0,0.9);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);flex-wrap:wrap;gap:10px;}
+        .topbar-header a img{height:44px;border-radius:8px;border:1px solid var(--border);}
+        .nav-links{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+        .nav-links a{font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--accent-dim);text-decoration:none;padding:6px 11px;border:1px solid transparent;border-radius:4px;transition:all 0.2s;white-space:nowrap;}
+        .nav-links a:hover,.nav-links a.active{color:var(--accent);border-color:var(--border-active);background:rgba(51,197,51,0.08);}
+        .nav-actions{display:flex;align-items:center;gap:6px;}
+        .nav-btn{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--accent-dim);background:transparent;border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer;transition:all 0.2s;white-space:nowrap;width:auto;}
+        .nav-btn:hover{color:var(--accent);border-color:var(--border-active);background:rgba(51,197,51,0.08);box-shadow:none;}
+        .nav-btn.logout{color:#ff6b6b;border-color:rgba(255,107,107,0.3);}
+        .nav-btn.logout:hover{background:rgba(255,107,107,0.1);border-color:rgba(255,107,107,0.6);}
+        .ham-btn{display:none;background:transparent;border:1px solid var(--border);border-radius:4px;padding:7px 10px;cursor:pointer;color:var(--accent);font-size:1rem;width:auto;}
+        .mobile-menu{display:none;flex-direction:column;background:rgba(5,20,5,0.97);border-bottom:1px solid var(--border);padding:12px 20px;gap:0;}
+        .mobile-menu a,.mobile-menu button{font-family:'Space Mono',monospace;font-size:0.8rem;color:var(--accent-dim);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);background:transparent;border-top:none;border-left:none;border-right:none;border-radius:0;width:100%;text-align:left;cursor:pointer;}
+        .mobile-menu a:hover,.mobile-menu button:hover{color:var(--accent);}
+        .mobile-menu.open{display:flex;}
+        @media(max-width:860px){.nav-links,.nav-actions{display:none;}.ham-btn{display:block;}}
+        .page-hero{background:var(--header-bg);border-bottom:1px solid var(--border);padding:28px 32px;text-align:center;position:relative;z-index:1;}
+        .page-hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.5rem,4vw,2.2rem);color:var(--accent);letter-spacing:-0.3px;}
+        .page-hero p{font-family:'Space Mono',monospace;font-size:0.78rem;color:var(--accent-dim);margin-top:6px;}
+        .balance-line{margin-top:10px;font-family:'Space Mono',monospace;font-size:1.2rem;color:var(--accent-bright);}
+        .page-content{max-width:900px;margin:0 auto;padding:28px 24px;width:100%;position:relative;z-index:1;}
+        .section-label{font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-dim);border-left:3px solid var(--accent);padding-left:10px;margin-bottom:14px;}
+        .card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:20px;box-shadow:var(--glow);}
+        .card p{color:var(--accent-dim);font-size:0.9rem;line-height:1.65;}
+        .card ul{color:var(--accent-dim);font-size:0.9rem;line-height:1.9;padding-left:20px;}
+        table{width:100%;border-collapse:collapse;}
+        thead tr{background:rgba(51,197,51,0.1);border-bottom:1px solid var(--border-active);}
+        thead th{font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);padding:12px 14px;text-align:left;}
+        tbody tr{border-bottom:1px solid var(--border);transition:background 0.15s;}
+        tbody tr:hover{background:rgba(51,197,51,0.04);}
+        tbody td{padding:11px 14px;font-size:0.85rem;color:var(--accent-dim);font-family:'Space Mono',monospace;}
+        .form-group{margin-bottom:16px;}
+        .form-group label,.form-group>span{display:block;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;}
+        input[type=text],input[type=password],input[type=email],input[type=tel],input[type=date],input[type=number],select,textarea{width:100%;background:rgba(0,0,0,0.5);border:1px solid var(--border);border-radius:6px;color:var(--accent);font-family:'Space Mono',monospace;font-size:0.85rem;padding:10px 13px;outline:none;transition:border 0.2s,box-shadow 0.2s;margin:0;}
+        input:focus,select:focus,textarea:focus{border-color:var(--border-active);box-shadow:0 0 0 3px rgba(51,197,51,0.1);}
+        select option{background:#0a1f0a;}
+        textarea{resize:vertical;min-height:80px;}
+        .btn{display:inline-block;font-family:'Space Mono',monospace;font-size:0.8rem;font-weight:700;padding:10px 22px;background:var(--accent);color:#000;border:none;border-radius:5px;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;text-decoration:none;width:auto;}
+        .btn:hover{background:var(--accent-bright);box-shadow:0 0 16px rgba(51,197,51,0.4);transform:translateY(-1px);}
+        .btn-outline{background:transparent;color:var(--accent);border:1px solid var(--border-active);}
+        .btn-outline:hover{background:rgba(51,197,51,0.1);box-shadow:0 0 12px rgba(51,197,51,0.2);transform:none;}
+        .btn-danger{background:transparent;color:#ff6b6b;border:1px solid rgba(255,107,107,0.35);}
+        .btn-danger:hover{background:rgba(255,107,107,0.1);box-shadow:none;transform:none;}
+        .btn-sm{padding:6px 14px;font-size:0.72rem;}
+        a{color:var(--accent-dim);text-decoration:underline;}a:hover{color:var(--accent);}
+        .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+        @media(max-width:620px){.grid-2{grid-template-columns:1fr;}.page-content{padding:16px 14px;}}
+        ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:#000;}::-webkit-scrollbar-thumb{background:rgba(51,197,51,0.3);border-radius:3px;}
     </style>
 </head>
 <body>
-    <header>
-        <a href="Dashboard.html"><img src="Expense_Mate_logo.jpg" alt="Expense Mate Logo" height="50"></a>
-        <nav>
-            <div class="h1">
-                <a href="Expense_List.html">Expense List</a> |
-                <a href="Budget_Planner.html">Budget Planner</a> |
-                <a href="Category_view.html">Category View</a> |
-                <a href="Add_Expense.html">Add Expense</a> |
-                <a href="Monthly_Summary.html">Monthly Summary</a>
-            </div>
-        </nav>
-        <nav>
-            <div class="h2">
-                <button onclick="location.href='help.html'">Help</button> |
-                <button onclick="location.href='About.html'">About</button> |
-                <button onclick="location.href='Profile.html'">Profile</button> |
-                <button onclick="location.href='login.html'">Logout</button>
-            </div>
-        </nav>
-        <div class="icon" onclick="toggle()"><svg width="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg></div>
-    </header>
-    <div class="headerBar">
-        <header>
-            <h1 class="title">Help Section</h1>
-        </header>
+    <nav class="topbar-header">
+        <a href="Dashboard.html"><img src="Expense_Mate_logo.jpg" alt="Expense Mate Logo"></a>
+        <div class="nav-links">
+            <a href="Expense_List.html">Expense List</a>
+            <a href="Budget_Planner.html">Budget Planner</a>
+            <a href="Category_view.html">Category View</a>
+            <a href="Add_Expense.html">Add Expense</a>
+            <a href="Monthly_Summary.html">Monthly Summary</a>
+        </div>
+        <div class="nav-actions">
+            <button class="nav-btn" onclick="location.href='help.html'">Help</button>
+            <button class="nav-btn" onclick="location.href='About.html'">About</button>
+            <button class="nav-btn" onclick="location.href='Profile.html'">Profile</button>
+            <button class="nav-btn logout" onclick="location.href='Login.html'">Logout</button>
+        </div>
+        <button class="ham-btn" onclick="document.getElementById('mobileMenu').classList.toggle('open')">&#9776;</button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="Expense_List.html">Expense List</a>
+        <a href="Budget_Planner.html">Budget Planner</a>
+        <a href="Category_view.html">Category View</a>
+        <a href="Add_Expense.html">Add Expense</a>
+        <a href="Monthly_Summary.html">Monthly Summary</a>
+        <a href="help.html">Help</a>
+        <a href="About.html">About</a>
+        <a href="Profile.html">Profile</a>
+        <button onclick="location.href='Login.html'">Logout</button>
     </div>
-    <div class="content">
-        <h2 class="secondTitle">Help Section</h2>
-        <div class="form">
-            <p>Welcome to the Help Section of Expense Mate. Here you can find answers to common questions and guidance on how to use the application effectively.</p>
+    <div class="page-hero">
+        <h1>Help Section</h1>
+        <p>Find answers and guidance here</p>
+    </div>
+    <div class="page-content">
+        <div class="section-label">Getting Started</div>
+        <div class="card">
+            <p>To get started, navigate to "Add Expense" to log your first expense. You can categorize expenses, set budgets, and view monthly summaries.</p>
         </div>
-        <h3 class="secondTitle">Getting Started</h3>
-        <div class="form">
-            <p>To get started with Expense Mate, you can add your expenses by navigating to the "Add Expense" section. You can categorize your expenses, set budgets, and view summaries of your spending.</p>
+        <div class="section-label">Frequently Asked Questions</div>
+        <div class="card" style="padding:0;overflow:hidden;">
+            <table>
+                <thead><tr><th>#</th><th>Question</th><th>Answer</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>How do I add a new expense?</td><td>Go to "Add Expense", fill in the details, and click Submit.</td></tr>
+                    <tr><td>2</td><td>How can I view by category?</td><td>Navigate to "Category View" for a breakdown.</td></tr>
+                    <tr><td>3</td><td>How do I set a budget?</td><td>Visit the "Budget Planner" section.</td></tr>
+                    <tr><td>4</td><td>Where is the monthly summary?</td><td>The "Monthly Summary" page has your overview.</td></tr>
+                </tbody>
+            </table>
         </div>
-        <h3 class="secondTitle">Frequently Asked Questions</h3>
-        <div class="form">
-            <ol>
-                <li><strong>How do I add a new expense?</strong></li>
-                <ul type="none">
-                    <li> Go to the "Add Expense" page, fill in the details, and click "Submit".</li>
-                </ul>
-                <li><strong>How can I view my expenses by category?</strong></li>
-                <ul type="none">
-                    <li> Navigate to the "Category View" page to see a breakdown of your expenses.</li>
-                </ul>
-                <li><strong>How do I set a budget?</strong></li>
-                <ul type="none">
-                    <li> Visit the "Budget Planner" section to create and manage your budgets.</li>
-                </ul>
-                <li><strong>Where can I see my monthly summary?</strong></li>
-                <ul type="none">
-                    <li> The "Monthly Summary" page provides an overview of your expenses for the month.</li>
-                </ul>
-            </ol>
-        </div>
-        <h3 class="secondTitle">Contact Support</h3>
-        <div class="form">
-            <p>If you need further assistance, please contact our support team at support@expense-mate.com or call us at +91 (123) 456-7890.</p>
+        <div class="section-label">Contact Support</div>
+        <div class="card">
+            <p>Need more help? Contact us at <strong style="color:var(--accent)">support@expense-mate.com</strong> or call <strong style="color:var(--accent)">+91 (123) 456-7890</strong>.</p>
         </div>
     </div>
-    <script>
-        let nav = document.querySelector('.h1');
-        function toggle(){
-            nav.classList.toggle('active');
-        }
-    </script>
 </body>
 </html>

@@ -3,349 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget_Planner</title>
+    <title>Expense Mate — Budget Planner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+        :root {
+            --bg-body:#060f06;--bg-card:#0a1f0a;--bg-card2:#0d2b0d;
+            --accent:rgb(51,197,51);--accent-bright:rgb(87,208,87);
+            --accent-dim:#6db985;--border:rgba(51,197,51,0.2);
+            --border-active:rgba(51,197,51,0.55);
+            --header-bg:linear-gradient(135deg,#000 0%,rgb(9,66,9) 100%);
+            --glow:0 0 20px rgba(51,197,51,0.12);
         }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-color: #cadee4;
-            color: black;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #d87979;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .h1 {
-            font-size: 18px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-        }
-        .h2 {
-            font-size: 14px;
-        }
-        .headerBar {
-            background-color: goldenrod;
-            color: #3f362c;
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        .title {
-            margin-bottom: 20px;
-            color: #3f362c;
-            font-size: 40px;
-            font-weight: bold;
-        }
-
-        .topbar {
-            margin-bottom: 10px;
-            font-size: 20px;
-            font-weight: normal;
-        }
-
-        .currency {
-            font-size: 30px;
-            font-weight: 300;
-        }
-
-        .balance {
-            font-size: 30px;
-            font-weight: 300;
-        }
-
-        .content {
-            width: 780px;
-            margin: 0 auto;
-            padding: 3%;
-            padding-left: 6%;
-        }
-
-        .secondTitle {
-            background-color: #ffcb48;
-            color: #333;
-            text-align: center;
-            padding: 20px;
-            font-size: 25px;
-        }
-
-        .form {
-            padding: 5px;
-            padding-top: 20px;
-            padding-left: 10%;
-            justify-content: center;
-            background-color: bisque;
-        }
-
-        .formLine {
-            display: inline-flex;
-            padding: 5px 0px;
-        }
-
-        .left {
-            float: left;
-        }
-
-        .right {
-            float: right;
-            margin-right: 100px;
-        }
-
-        input,select {
-            width: 130px;
-            margin-left: 10px;
-        }
-
-        /* table style */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        thead {
-            background-color:#8d712a;
-            color: white;
-            line-height: 30px;
-        }
-
-        tbody {
-            background-color: bisque;
-            line-height: 30px;
-            text-align: center;
-        }
-
-        /* Button */
-
-        button {
-            width: 100px;
-            color: #333;
-            padding: 10px;
-            text-align: center;
-            font-size: 1.1em;
-            line-height: 20px;
-            background-color: #ffcb48;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            box-shadow: 0 0 0 2px grey;
-            transition: 0.5s;
-        }
-
-        a {
-            text-decoration: underline;
-            cursor: pointer;
-        }
-        form > button {
-             width: 100px;
-            color: #333;
-            padding: 10px;
-            text-align: center;
-            font-size: 1.1em;
-            line-height: 20px;
-            background-color: #ffcb48;
-            border-radius: 5px;
-            cursor: pointer;
-            display: inline-block;
-            margin-top: 20px;
-            display: inline-block;
-        }
-        div > header{
-            display: block;
-            unicode-bidi: isolate;
-        }
-        .icon{
-            display: none;
-        }
-        @media screen and (max-width:857px){
-            .icon{
-            display: inline;
-            }
-            .h1{
-            display: none;
-            }
-            .h1.active{
-            display: flex;
-            flex-direction: column;
-            height: calc(100vh - 480px);
-            width: calc(100% - 77%);
-            top: 8px;
-            right: 16px;
-            position: absolute;
-            top: 30px;
-            left: 0px;
-            border: 5px solid;
-            background-color: #ffcb48;
-            }
-        }
+        *{box-sizing:border-box;padding:0;margin:0;}
+        body{font-family:'Syne',sans-serif;min-height:100vh;background:var(--bg-body);color:var(--accent);display:flex;flex-direction:column;}
+        body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(51,197,51,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(51,197,51,0.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+        .topbar-header{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:rgba(0,0,0,0.9);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);flex-wrap:wrap;gap:10px;}
+        .topbar-header a img{height:44px;border-radius:8px;border:1px solid var(--border);}
+        .nav-links{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+        .nav-links a{font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--accent-dim);text-decoration:none;padding:6px 11px;border:1px solid transparent;border-radius:4px;transition:all 0.2s;white-space:nowrap;}
+        .nav-links a:hover,.nav-links a.active{color:var(--accent);border-color:var(--border-active);background:rgba(51,197,51,0.08);}
+        .nav-actions{display:flex;align-items:center;gap:6px;}
+        .nav-btn{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--accent-dim);background:transparent;border:1px solid var(--border);border-radius:4px;padding:6px 12px;cursor:pointer;transition:all 0.2s;white-space:nowrap;width:auto;}
+        .nav-btn:hover{color:var(--accent);border-color:var(--border-active);background:rgba(51,197,51,0.08);box-shadow:none;}
+        .nav-btn.logout{color:#ff6b6b;border-color:rgba(255,107,107,0.3);}
+        .nav-btn.logout:hover{background:rgba(255,107,107,0.1);border-color:rgba(255,107,107,0.6);}
+        .ham-btn{display:none;background:transparent;border:1px solid var(--border);border-radius:4px;padding:7px 10px;cursor:pointer;color:var(--accent);font-size:1rem;width:auto;}
+        .mobile-menu{display:none;flex-direction:column;background:rgba(5,20,5,0.97);border-bottom:1px solid var(--border);padding:12px 20px;gap:0;}
+        .mobile-menu a,.mobile-menu button{font-family:'Space Mono',monospace;font-size:0.8rem;color:var(--accent-dim);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);background:transparent;border-top:none;border-left:none;border-right:none;border-radius:0;width:100%;text-align:left;cursor:pointer;}
+        .mobile-menu a:hover,.mobile-menu button:hover{color:var(--accent);}
+        .mobile-menu.open{display:flex;}
+        @media(max-width:860px){.nav-links,.nav-actions{display:none;}.ham-btn{display:block;}}
+        .page-hero{background:var(--header-bg);border-bottom:1px solid var(--border);padding:28px 32px;text-align:center;position:relative;z-index:1;}
+        .page-hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.5rem,4vw,2.2rem);color:var(--accent);letter-spacing:-0.3px;}
+        .page-hero p{font-family:'Space Mono',monospace;font-size:0.78rem;color:var(--accent-dim);margin-top:6px;}
+        .balance-line{margin-top:10px;font-family:'Space Mono',monospace;font-size:1.2rem;color:var(--accent-bright);}
+        .page-content{max-width:900px;margin:0 auto;padding:28px 24px;width:100%;position:relative;z-index:1;}
+        .section-label{font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-dim);border-left:3px solid var(--accent);padding-left:10px;margin-bottom:14px;}
+        .card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:20px;box-shadow:var(--glow);}
+        .card p{color:var(--accent-dim);font-size:0.9rem;line-height:1.65;}
+        .card ul{color:var(--accent-dim);font-size:0.9rem;line-height:1.9;padding-left:20px;}
+        table{width:100%;border-collapse:collapse;}
+        thead tr{background:rgba(51,197,51,0.1);border-bottom:1px solid var(--border-active);}
+        thead th{font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);padding:12px 14px;text-align:left;}
+        tbody tr{border-bottom:1px solid var(--border);transition:background 0.15s;}
+        tbody tr:hover{background:rgba(51,197,51,0.04);}
+        tbody td{padding:11px 14px;font-size:0.85rem;color:var(--accent-dim);font-family:'Space Mono',monospace;}
+        .form-group{margin-bottom:16px;}
+        .form-group label,.form-group>span{display:block;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;}
+        input[type=text],input[type=password],input[type=email],input[type=tel],input[type=date],input[type=number],select,textarea{width:100%;background:rgba(0,0,0,0.5);border:1px solid var(--border);border-radius:6px;color:var(--accent);font-family:'Space Mono',monospace;font-size:0.85rem;padding:10px 13px;outline:none;transition:border 0.2s,box-shadow 0.2s;margin:0;}
+        input:focus,select:focus,textarea:focus{border-color:var(--border-active);box-shadow:0 0 0 3px rgba(51,197,51,0.1);}
+        select option{background:#0a1f0a;}
+        textarea{resize:vertical;min-height:80px;}
+        .btn{display:inline-block;font-family:'Space Mono',monospace;font-size:0.8rem;font-weight:700;padding:10px 22px;background:var(--accent);color:#000;border:none;border-radius:5px;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;text-decoration:none;width:auto;}
+        .btn:hover{background:var(--accent-bright);box-shadow:0 0 16px rgba(51,197,51,0.4);transform:translateY(-1px);}
+        .btn-outline{background:transparent;color:var(--accent);border:1px solid var(--border-active);}
+        .btn-outline:hover{background:rgba(51,197,51,0.1);box-shadow:0 0 12px rgba(51,197,51,0.2);transform:none;}
+        .btn-danger{background:transparent;color:#ff6b6b;border:1px solid rgba(255,107,107,0.35);}
+        .btn-danger:hover{background:rgba(255,107,107,0.1);box-shadow:none;transform:none;}
+        .btn-sm{padding:6px 14px;font-size:0.72rem;}
+        a{color:var(--accent-dim);text-decoration:underline;}a:hover{color:var(--accent);}
+        .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+        @media(max-width:620px){.grid-2{grid-template-columns:1fr;}.page-content{padding:16px 14px;}}
+        ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:#000;}::-webkit-scrollbar-thumb{background:rgba(51,197,51,0.3);border-radius:3px;}
     </style>
 </head>
 <body>
-    <header>
-        <a href="Dashboard.html"><img src="Expense_Mate_logo.jpg" alt="Expense Mate Logo" height="50"></a>
-        <nav>
-            <div class="h1">
-                <a href="Expense_List.html">Expense List</a> |
-                <a href="Budget_Planner.html">Budget Planner</a> |
-                <a href="Category_view.html">Category View</a> |
-                <a href="Add_Expense.html">Add Expense</a> |
-                <a href="Monthly_Summary.html">Monthly Summary</a>
-            </div>
-        </nav>
-        <nav>
-            <div class="h2">
-                <button onclick="location.href='help.html'">Help</button> |
-                <button onclick="location.href='About.html'">About</button> |
-                <button onclick="location.href='Profile.html'">Profile</button> |
-                <button onclick="location.href='login.html'">Logout</button>
-            </div>
-        </nav>
-        <div class="icon" onclick="toggle()"><svg width="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg></div>
-    </header>
-    <div class="headerBar">
-        <header>
-            <h1 class="title">My Budget Tracker</h1>
-            <h2 class="topbar">Your Current Balance</h2>
-            <p>
-                <span class="currency">&#8377</span>
-                <span class="balance"></span>
-            </p>
-        <header>
+    <nav class="topbar-header">
+        <a href="Dashboard.html"><img src="Expense_Mate_logo.jpg" alt="Expense Mate Logo"></a>
+        <div class="nav-links">
+            <a href="Expense_List.html">Expense List</a>
+            <a href="Budget_Planner.html">Budget Planner</a>
+            <a href="Category_view.html">Category View</a>
+            <a href="Add_Expense.html">Add Expense</a>
+            <a href="Monthly_Summary.html">Monthly Summary</a>
+        </div>
+        <div class="nav-actions">
+            <button class="nav-btn" onclick="location.href='help.html'">Help</button>
+            <button class="nav-btn" onclick="location.href='About.html'">About</button>
+            <button class="nav-btn" onclick="location.href='Profile.html'">Profile</button>
+            <button class="nav-btn logout" onclick="location.href='Login.html'">Logout</button>
+        </div>
+        <button class="ham-btn" onclick="document.getElementById('mobileMenu').classList.toggle('open')">&#9776;</button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="Expense_List.html">Expense List</a>
+        <a href="Budget_Planner.html">Budget Planner</a>
+        <a href="Category_view.html">Category View</a>
+        <a href="Add_Expense.html">Add Expense</a>
+        <a href="Monthly_Summary.html">Monthly Summary</a>
+        <a href="help.html">Help</a>
+        <a href="About.html">About</a>
+        <a href="Profile.html">Profile</a>
+        <button onclick="location.href='Login.html'">Logout</button>
     </div>
-    <div class="content">
-        <h3 class="secondTitle">Add Transaction</h3>
-        <div class="form">
+    <div class="page-hero">
+        <h1>Budget Planner</h1>
+        <p>Your Current Balance</p>
+        <div class="balance-line">&#8377; <span class="balance-val">0.00</span></div>
+    </div>
+    <div class="page-content" style="max-width:700px;">
+        <div class="section-label">Add Transaction</div>
+        <div class="card">
             <form id="expForm">
-                <div class="formLine left">
-                    <span for="type">Type:</span>
-                    <select id="type">
-                        <option value="chooseOne">Choose one...</option>
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
-                    </select>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Transaction Type</label>
+                        <select id="type">
+                            <option value="chooseOne">Choose one...</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="Category">
+                            <option value="chooseOne">Choose one...</option>
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="formLine right">
-                    <span for="Category">Category:</span>
-                    <select id="Category">
-                        <option value="chooseOne">Choose one...</option>
-                        <option value="Food">Food</option>
-                        <option value="Transport">Transport</option>
-                        <option value="Entertainment">Entertainment</option>
-                        <option value="Utilities">Utilities</option>
-                        <option value="Others">Others</option>
-                    </select>
+                <div class="form-group">
+                    <label>Amount (&#8377;)</label>
+                    <input type="number" id="amount" placeholder="0.00" min="0" step="0.01">
                 </div>
-                <div class="formLine right">
-                    <span for="amount">Amount:</span>
-                    <input type="text" id="amount">
+                <div style="display:flex;gap:12px;">
+                    <button type="submit" class="btn">Save</button>
+                    <button type="reset" class="btn btn-outline">Cancel</button>
                 </div>
-                <button type="submit" class="buttonSave">Save</button>
-                <button type="cansel">cansel</button>
             </form>
         </div>
-    </div>
-    <div class="content">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Type</th>
-                    <th>Category</th>
-                    <th>Amount</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="transactionTable"></tbody>
-        </table>
+        <div class="section-label">Transactions</div>
+        <div class="card" style="padding:0;overflow:hidden;">
+            <table>
+                <thead>
+                    <tr><th>Type</th><th>Category</th><th>Amount (&#8377;)</th><th>Action</th></tr>
+                </thead>
+                <tbody id="transactionTable"></tbody>
+            </table>
+        </div>
     </div>
     <script>
         document.getElementById('expForm').addEventListener('submit', addTransaction);
-        // initial array of transactions, reading from localStorage
-        const transactions = JSON.parse(localStorage.getItem('transactions')) || [];    
+        const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
         function addTransaction(e) {
             e.preventDefault();
-            // get type, Category, and amount
             let type = document.getElementById('type').value;
             let Category = document.getElementById('Category').value;
             let amount = document.getElementById('amount').value;
-            if (type != 'chooseOne' && Category != 'chooseOne' && amount > 0) {
-                const transaction = {
-                    type,
-                    Category,
-                    amount,
-                    id: transactions.length > 0 ? transactions[transactions.length - 1].id + 1 : 1,
-                }
-                transactions.push(transaction);
-                // localStorage 
+            if (type !== 'chooseOne' && Category !== 'chooseOne' && amount > 0) {
+                transactions.push({ type, Category, amount,
+                    id: transactions.length > 0 ? transactions[transactions.length-1].id+1 : 1 });
                 localStorage.setItem('transactions', JSON.stringify(transactions));
             }
             document.getElementById('expForm').reset();
-            showTransactions();
-            updateBalance();
+            showTransactions(); updateBalance();
         }
-        const showTransactions = () => {
-            const transactionTable = document.getElementById('transactionTable');
-            transactionTable.innerHTML = '';
-            for (let i = 0; i < transactions.length; i++) {
-                transactionTable.innerHTML += `
-                    <tr>
-                        <td>${transactions[i].type}</td>
-                        <td>${transactions[i].Category}</td>
-                        <td>$${transactions[i].amount}</td>
-                        <td><a class="deleteButton" onclick="deleteTransaction(${transactions[i].id})">Delete</td>
-                    </tr>
-                `;
-            }
-        }
-        const deleteTransaction = (id) => {
-            for (let i = 0; i < transactions.length; i++) {
-                if (transactions[i].id == id) {
-                    transactions.splice(i, 1);
-                }
-            }
-
-            // localStorage
-            localStorage.setItem('transactions', JSON.stringify(transactions));
-            showTransactions();
-            updateBalance();
-        }
-
-        const updateBalance = () => {
-            let balance = 0;
-            transactions.forEach((transaction) => {
-                if (transaction.type === "income") {
-                    balance += Number(transaction.amount);
-                } else if (transaction.type === "expense") {
-                    balance -= transaction.amount;
-                }
+        function showTransactions() {
+            const tb = document.getElementById('transactionTable');
+            tb.innerHTML = '';
+            transactions.forEach(t => {
+                const typeColor = t.type === 'income' ? 'color:var(--accent)' : 'color:#ff6b6b';
+                tb.innerHTML += `<tr>
+                    <td style="${typeColor}">${t.type}</td>
+                    <td>${t.Category}</td>
+                    <td>&#8377; ${Number(t.amount).toFixed(2)}</td>
+                    <td><button class="btn btn-danger btn-sm" onclick="deleteTransaction(${t.id})">Delete</button></td>
+                </tr>`;
             });
-            document.querySelector(".balance").textContent = balance;
         }
-        
-      let nav = document.querySelector('.h1');
-      function toggle(){
-        nav.classList.toggle('active');
-      }
+        function deleteTransaction(id) {
+            const idx = transactions.findIndex(t => t.id == id);
+            if (idx > -1) transactions.splice(idx, 1);
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+            showTransactions(); updateBalance();
+        }
+        function updateBalance() {
+            let balance = 0;
+            transactions.forEach(t => {
+                balance += t.type === 'income' ? Number(t.amount) : -Number(t.amount);
+            });
+            document.querySelector('.balance-val').textContent = balance.toFixed(2);
+        }
+        showTransactions(); updateBalance();
     </script>
 </body>
 </html>

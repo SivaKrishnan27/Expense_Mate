@@ -3,186 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>Expense Mate — Landing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+        :root {
+            --bg-deep: #000000;
+            --bg-dark: rgb(9,66,9);
+            --accent: rgb(51,197,51);
+            --accent-bright: rgb(87,208,87);
+            --accent-dim: #6db985;
+            --chip-bg: rgb(87,208,87);
+            --chip-text: rgb(18,78,18);
+            --border: rgba(51,197,51,0.3);
         }
+        * { box-sizing: border-box; padding: 0; margin: 0; }
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Syne', sans-serif;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            background-color: #cadee4;
-            color: black;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #d87979;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .h1 {
-            font-size: 18px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-        }
-        .h2 {
-            font-size: 14px;
-        }
-        .headerBar {
-            background-color: goldenrod;
-            color: #3f362c;
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        .title {
-            margin-bottom: 20px;
-            color: #3f362c;
-            font-size: 40px;
-            font-weight: bold;
-        }
-
-        .topbar {
-            margin-bottom: 10px;
-            font-size: 20px;
-            font-weight: normal;
-        }
-
-        .currency {
-            font-size: 30px;
-            font-weight: 300;
-        }
-
-        .balance {
-            font-size: 30px;
-            font-weight: 300;
-        }
-
-        .content {
-            width: 630px;
-            margin: 0 auto;
-            padding: 3%;
-            padding-left: 6%;
-        }
-
-        .secondTitle {
-            background-color: #ffcb48;
-            color: #333;
-            text-align: center;
-            padding: 20px;
-            font-size: 25px;
-        }
-
-        .form {
-            padding: 5px;
-            padding-top: 20px;
             justify-content: center;
-            background-color: bisque;
-            display: grid;
-            grid-template-rows: repeat(5,auto);
+            align-items: center;
+            background: linear-gradient(160deg, #000000 0%, rgb(9,66,9) 100%);
+            color: var(--accent);
+            overflow: hidden;
         }
-
-        .formLine {
-            display: inline-flex;
-            padding: 5px 0px;
+        /* animated grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(51,197,51,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(51,197,51,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
         }
-
-        .left {
-            float: left;
-        }
-
-        .right {
-            float: right;
-            margin-right: 100px;
-        }
-
-        input,select {
-            width: 130px;
-            margin-left: 10px;
-        }
-
-        /* Button */
-
-        button {
-            width: 100px;
-            color: #333;
-            padding: 10px;
+        .landing {
+            max-width: 620px;
             text-align: center;
-            font-size: 1.1em;
-            line-height: 20px;
-            background-color: #ffcb48;
-            border-radius: 5px;
-            cursor: pointer;
+            padding: 40px 32px;
+            position: relative;
+            animation: fadeUp 0.8s ease both;
         }
-
-        button:hover {
-            box-shadow: 0 0 0 2px grey;
-            transition: 0.5s;
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
-
-        a {
-            text-decoration: underline;
-            cursor: pointer;
-            color: black;
+        .logo-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 28px;
         }
-        form > button {
-             width: 100px;
-            color: #333;
-            padding: 10px;
-            text-align: center;
-            font-size: 1.1em;
-            line-height: 20px;
-            background-color: #ffcb48;
-            border-radius: 5px;
-            cursor: pointer;
+        .logo-wrap img {
+            height: 72px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 30px rgba(51,197,51,0.25);
+        }
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            line-height: 1.1;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        h2 {
+            font-family: 'Space Mono', monospace;
+            font-weight: 400;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            color: var(--accent-dim);
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        .tagline {
+            color: var(--accent-dim);
+            font-size: 1rem;
+            margin-bottom: 32px;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+        .feature-chips {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 36px;
+        }
+        .chip {
+            background: rgba(87,208,87,0.15);
+            border: 1px solid var(--accent);
+            color: var(--accent-bright);
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: 'Space Mono', monospace;
+            transition: all 0.2s ease;
+            cursor: default;
+        }
+        .chip:hover {
+            background: rgba(87,208,87,0.28);
+            box-shadow: 0 0 12px rgba(51,197,51,0.3);
+        }
+        .cta-btn {
             display: inline-block;
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 14px 42px;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: all 0.25s ease;
+            box-shadow: 0 0 24px rgba(51,197,51,0.4);
+            text-decoration: none;
         }
-        div > header{
-            display: block;
-            unicode-bidi: isolate;
-        }
-        form{
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(5, auto) auto;
-            grid-gap: 10px 50px;
+        .cta-btn:hover {
+            background: var(--accent-bright);
+            box-shadow: 0 0 36px rgba(51,197,51,0.6);
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
-    <div>
-        <header class="headerBar">
+    <div class="landing">
+        <div class="logo-wrap">
             <img src="Expense_Mate_logo.jpg" alt="Expense Mate Logo">
-            <h1 class="title">Welcome to Expense Mate</h1>
-            <p class="topbar">Manage Your Expenses Efficiently</p>
-        </header>
+        </div>
+        <h1>Welcome to Expense Mate</h1>
+        <h2>Manage Your Expenses Efficiently</h2>
+        <p class="tagline">Track expenses, plan budgets, and gain insights —<br>all in one beautifully simple tool.</p>
+        <div class="feature-chips">
+            <span class="chip">📊 Expense Tracking</span>
+            <span class="chip">💰 Budget Planner</span>
+            <span class="chip">📅 Monthly Reports</span>
+            <span class="chip">🗂 Category Views</span>
+        </div>
+        <a class="cta-btn" href="Login.html">Get Started →</a>
     </div>
-    <div class="content">
-        <div class="secondTitle">
-            <p>Your expense management solution</p>
-            <p>It is a tool for tracking and managing expenses efficiently.</p>
-        </div>
-        <div class="form">
-           
-            <button onclick="location.href='Login.html'">Get Started</button>
-        </div>
-    </div>  
 </body>
 </html>

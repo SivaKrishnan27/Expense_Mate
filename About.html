@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Mate — Add Expense</title>
+    <title>Expense Mate — About</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,7 +16,8 @@
         }
         *{
             box-sizing:border-box;
-            padding:0;margin:0;
+            padding:0;
+            margin:0;
         }
         body{
             font-family:'Syne',sans-serif;
@@ -32,8 +33,7 @@
             inset:0;
             background-image:linear-gradient(rgba(51,197,51,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(51,197,51,0.025) 1px,transparent 1px);
             background-size:40px 40px;
-            pointer-events:none;
-            z-index:0;
+            pointer-events:none;z-index:0;
         }
         .topbar-header{
             display:flex;
@@ -85,8 +85,7 @@
             font-size:0.7rem;
             color:var(--accent-dim);
             background:transparent;
-            border:1px solid var(--border);
-            border-radius:4px;
+            border:1px solid var(--border);border-radius:4px;
             padding:6px 12px;
             cursor:pointer;
             transition:all 0.2s;
@@ -111,7 +110,8 @@
             display:none;
             background:transparent;
             border:1px solid var(--border);
-            border-radius:4px;padding:7px 10px;
+            border-radius:4px;
+            padding:7px 10px;
             cursor:pointer;
             color:var(--accent);
             font-size:1rem;
@@ -122,7 +122,8 @@
             flex-direction:column;
             background:rgba(5,20,5,0.97);
             border-bottom:1px solid var(--border);
-            padding:12px 20px;gap:0;
+            padding:12px 20px;
+            gap:0;
         }
         .mobile-menu a,.mobile-menu button{
             font-family:'Space Mono',monospace;
@@ -152,7 +153,6 @@
             }
             .ham-btn{
                 display:block;
-            
             }
         }
         .page-hero{
@@ -179,8 +179,7 @@
         .balance-line{
             margin-top:10px;
             font-family:'Space Mono',monospace;
-            font-size:1.2rem;
-            color:var(--accent-bright);
+            font-size:1.2rem;color:var(--accent-bright);
         }
         .page-content{
             max-width:900px;
@@ -233,8 +232,7 @@
             letter-spacing:1.5px;
             text-transform:uppercase;
             color:var(--accent);
-            padding:12px 14px;
-            text-align:left;
+            padding:12px 14px;text-align:left;
         }
         tbody tr{
             border-bottom:1px solid var(--border);
@@ -265,8 +263,7 @@
             width:100%;
             background:rgba(0,0,0,0.5);
             border:1px solid var(--border);
-            border-radius:6px;
-            color:var(--accent);
+            border-radius:6px;color:var(--accent);
             font-family:'Space Mono',monospace;
             font-size:0.85rem;
             padding:10px 13px;
@@ -339,8 +336,7 @@
         }
         .grid-2{
             display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:20px;
+            grid-template-columns:repeat(2,1fr);gap:20px;
         }
         @media(max-width:620px){
             .grid-2{
@@ -350,10 +346,7 @@
                 padding:16px 14px;
             }
         }
-        ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:#000;}::-webkit-scrollbar-thumb{
-            background:rgba(51,197,51,0.3);
-            border-radius:3px;
-        }
+        ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:#000;}::-webkit-scrollbar-thumb{background:rgba(51,197,51,0.3);border-radius:3px;}
     </style>
 </head>
 <body>
@@ -386,95 +379,37 @@
         <button onclick="location.href='Login.html'">Logout</button>
     </div>
     <div class="page-hero">
-        <h1>Add New Expense</h1>
-        <p>Record a new transaction</p>
+        <h1>About Expense Mate</h1>
+        <p>Learn more about us</p>
     </div>
-    <div class="page-content" style="max-width:560px;">
+    <div class="page-content">
+        <div class="section-label">About</div>
         <div class="card">
-            <form id="expForm">
-                <div class="form-group">
-                    <label for="date">Date</label>
-                    <input type="date" name="date" id="date">
-                </div>
-                <div class="form-group">
-                    <label for="amount">Amount (&#8377;)</label>
-                    <input type="number" id="amount" placeholder="0.00" min="0" step="0.01">
-                </div>
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="category" name="category" required>
-                        <option value="">Select category...</option>
-                        <option value="Food">Food</option>
-                        <option value="Transport">Transport</option>
-                        <option value="Entertainment">Entertainment</option>
-                        <option value="Shopping">Shopping</option>
-                        <option value="Bills">Bills</option>
-                        <option value="Health">Health</option>
-                        <option value="Education">Education</option>
-                        <option value="Travel">Travel</option>
-                        <option value="Others">Others</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea id="description" rows="3" placeholder="What was this expense for?"></textarea>
-                </div>
-                <div style="display:flex;gap:12px;flex-wrap:wrap;">
-                    <button type="submit" class="btn">Add Expense</button>
-                    <button type="reset" class="btn btn-outline">Clear</button>
-                </div>
-            </form>
+            <p>Expense Mate is a user-friendly expense management application designed to help you track and manage your finances effectively. Our goal is to provide users with an intuitive platform to monitor spending habits, plan budgets, and achieve financial goals.</p>
+        </div>
+        <div class="section-label">Our Mission</div>
+        <div class="card">
+            <p>At Expense Mate, our mission is to empower individuals to take control of their financial well-being through easy-to-use tools and insightful analytics. We believe managing expenses should be simple and accessible to everyone.</p>
+        </div>
+        <div class="section-label">Features</div>
+        <div class="card">
+            <ul>
+                <li>Add and categorize expenses</li>
+                <li>View expenses by category</li>
+                <li>Plan and track budgets</li>
+                <li>Generate monthly summaries and reports</li>
+            </ul>
+        </div>
+        <div class="section-label">Contact Us</div>
+        <div class="card">
+            <p>If you have any questions or need assistance, reach out to us:</p>
+            <br>
+            <p>📧 support@expense-mate.com</p>
+            <p>📞 +91  1234567890</p>
+            <p>📍 123 Finance St, Mumbai, INDIA</p>
+            <br>
+            <p>Thank you for choosing Expense Mate!</p>
         </div>
     </div>
-    <script>
-        const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-        const editIndex = localStorage.getItem('editIndex');
-
-        if (editIndex !== null) {
-            // Load data for editing
-            const transaction = transactions[parseInt(editIndex)];
-            if (transaction && transaction.type === 'expense') {
-                document.getElementById('date').value = transaction.date || '';
-                document.getElementById('amount').value = transaction.amount;
-                document.getElementById('category').value = transaction.Category;
-                document.getElementById('description').value = transaction.description || '';
-                document.querySelector('button[type="submit"]').textContent = 'Update Expense';
-            }
-            localStorage.removeItem('editIndex');
-        }
-
-        document.getElementById('expForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const date = document.getElementById('date').value;
-            const amount = document.getElementById('amount').value;
-            const category = document.getElementById('category').value;
-            const description = document.getElementById('description').value;
-
-            if (amount && category) {
-                const transaction = { 
-                    type: 'expense', 
-                    Category: category, 
-                    amount: parseFloat(amount), 
-                    description: description,
-                    date: date,
-                    id: transactions.length > 0 ? transactions[transactions.length-1].id + 1 : 1 
-                };
-
-                if (editIndex !== null) {
-                    // Update existing
-                    transaction.id = transactions[parseInt(editIndex)].id;
-                    transactions[parseInt(editIndex)] = transaction;
-                } else {
-                    // Add new
-                    transactions.push(transaction);
-                }
-
-                localStorage.setItem('transactions', JSON.stringify(transactions));
-                window.location.href = 'Expense_List.html';
-            } else {
-                alert('Please fill required fields');
-            }
-        });
-    </script>
 </body>
 </html>
